@@ -48,6 +48,7 @@ namespace ACA_XML_Reader {
             Boolean isRecordID = false,
                 //Element field Type.
                 isFirstName = false,
+                isMiddleName = false,
                 isLastName = false,
                 isSSN = false,
                 badRecord = false;
@@ -55,6 +56,7 @@ namespace ACA_XML_Reader {
             string recordID = "";
 
             string persFirstName = "",
+                persMiddleName = "",
                 persLastName = "",
                 persSSN = "",
                 previousPersSSN = "";
@@ -91,6 +93,10 @@ namespace ACA_XML_Reader {
                             persLastName = elementValueText;
                             isLastName = false;
                         }
+                        else if (isMiddleName) {
+                            persMiddleName = elementValueText;
+                            isMiddleName = false;
+                        }
                         else if (isSSN) { //previousPersSSN != elementValueText && elementValueText.Length == 9
                             previousPersSSN = elementValueText;
                             persSSN = elementValueText;
@@ -107,6 +113,7 @@ namespace ACA_XML_Reader {
                     if (elementNameText == "RecordId") {
                         isRecordID = true;
                         persFirstName = "";
+                        persMiddleName = "";
                         persLastName = "";
                         persSSN = "";
                         badRecord = false;
@@ -119,6 +126,9 @@ namespace ACA_XML_Reader {
                          */
                         if (elementNameText == "PersonFirstNm") {
                             isFirstName = true;
+                        }
+                        if (elementNameText == "persMiddleName") {
+                            isMiddleName = true;
                         }
                         /*
                          * First name should appear third in the XML.
@@ -139,6 +149,7 @@ namespace ACA_XML_Reader {
                         }
                         if (elementNameText == "CoveredIndividualGrp") {
                             persFirstName = "{ERROR}";
+                            persMiddleName = "{ERROR}";
                             persLastName = "{ERROR}";
                             persSSN = "{ERROR}";
                         }
@@ -147,9 +158,9 @@ namespace ACA_XML_Reader {
                 else if (nodeType == XmlNodeType.EndElement) {
                     string elementNameText = xmlTextRead_SubmissionFile.Name;
                     if (elementNameText == "CoveredIndividualGrp") {
-                        if (persFirstName != "" || persLastName != "" || persSSN != "")
+                        if (persFirstName != "" || persMiddleName != "" || persLastName != "" || persSSN != "")
                             //if (persFirstName != "{ERROR}" && persLastName != "{ERROR}" && persSSN != "{ERROR}")
-                                dataGridView1.Rows.Add(recordID, persFirstName, persLastName, persSSN);
+                                dataGridView1.Rows.Add(recordID, persFirstName, persMiddleName, persLastName, persSSN);
                     }
                 }
             }

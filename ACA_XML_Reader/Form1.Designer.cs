@@ -36,6 +36,7 @@
             this.textBox_SubmissionFile = new System.Windows.Forms.TextBox();
             this.recordID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.middleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SSN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -65,6 +66,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.recordID,
             this.firstName,
+            this.middleName,
             this.lastName,
             this.SSN});
             this.dataGridView1.Location = new System.Drawing.Point(12, 113);
@@ -95,6 +97,11 @@
             // 
             this.firstName.HeaderText = "First Name";
             this.firstName.Name = "firstName";
+            // 
+            // middleName
+            // 
+            this.middleName.HeaderText = "Middle Name";
+            this.middleName.Name = "middleName";
             // 
             // lastName
             // 
@@ -135,6 +142,7 @@
         private System.Windows.Forms.TextBox textBox_SubmissionFile;
         private System.Windows.Forms.DataGridViewTextBoxColumn recordID;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn middleName;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn SSN;
     }
