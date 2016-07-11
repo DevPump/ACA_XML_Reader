@@ -127,7 +127,7 @@ namespace ACA_XML_Reader {
                         if (elementNameText == "PersonFirstNm") {
                             isFirstName = true;
                         }
-                        if (elementNameText == "persMiddleName") {
+                        if (elementNameText == "PersMiddleName") {
                             isMiddleName = true;
                         }
                         /*
